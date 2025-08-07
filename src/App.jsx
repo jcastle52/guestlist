@@ -10,11 +10,26 @@ export default function App() {
   if (guest) {
     return (
       <>
-      <h1>{guest.name}</h1>
-      <p>{guest.bio}</p>
-      <button onClick={() => {setGuest(undefined)}}>Back</button>
+        <h1>{guest.name}</h1>
+        <div>
+          <h2>About</h2>
+          <p>{guest.job}</p>
+          <p>{guest.bio}</p>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <p>{guest.email}</p>
+          <p>{guest.phone}</p>
+        </div>
+        <button
+          onClick={() => {
+            setGuest(undefined);
+          }}
+        >
+          Back
+        </button>
       </>
-    )
+    );
   }
   if (loading) {
     return <h1>loading...</h1>;
@@ -40,8 +55,7 @@ export default function App() {
               <tr
                 key={element.id}
                 onClick={() => {
-                  GetGuests(apiUrl + "/" + element.id)
-                  setGuest(element)
+                  setGuest(element);
                 }}
               >
                 <td>{element.name}</td>
